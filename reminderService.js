@@ -51,7 +51,7 @@ async function sendFollowUpReminders() {
 // Self-ping function
 async function selfPing() {
   try {
-    const APP_URL = process.env.APP_URL || process.env.DEPLOYED_URL || 'http://localhost:3000';
+    const APP_URL = 'https://followuppro-backend.onrender.com';
     const response = await axios.get(`${APP_URL}/health`, { 
       timeout: 30000,
       headers: { 'User-Agent': 'Self-Ping-Service' }
