@@ -4,7 +4,7 @@ const axios = require('axios');
 const Job = require('./models/Job');
 const User = require('./models/User');
 
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
@@ -49,9 +49,9 @@ async function sendFollowUpReminders() {
 }
 
 // Self-ping function
-async function selfPing() {S
+async function selfPing() {
   try {
-    const APP_URL = process.env.APP_URL || process.env.DEPLOYED_URL || 'https://followuppro-backend.onrender.com/';
+    const APP_URL = process.env.APP_URL || process.env.DEPLOYED_URL || 'http://localhost:3000';
     const response = await axios.get(`${APP_URL}/health`, { 
       timeout: 30000,
       headers: { 'User-Agent': 'Self-Ping-Service' }
